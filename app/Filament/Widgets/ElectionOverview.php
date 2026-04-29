@@ -12,11 +12,15 @@ class ElectionOverview extends BaseWidget
 {
     protected function getStats(): array
     {
+        $totalVoters = Voter::count();
         $participation = Voter::query()->where('has_voted', 1)->count();
-        $percentage_participation = (Voter::query()->where('has_voted', 1)->count())/(Voter::count())*100;
+        $percentageParticipation = $totalVoters > 0
+            ? ($participation / $totalVoters) * 100
+            : 0;
+
         return [
-            Stat::make('Total Voters', Voter::count()),
-            Stat::make('Participation', round($percentage_participation,2).'%')
+            Stat::make('Total Voters', $totalVoters),
+            Stat::make('Participation', round($percentageParticipation, 2) . '%')
             ->description($participation.' Voters')
             ->descriptionIcon('heroicon-m-arrow-trending-up')
             ->chart([7, 2, 10, 3, 15, 4, 17])
