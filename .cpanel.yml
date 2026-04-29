@@ -1,4 +1,0 @@
-deployment:
-  tasks:
-    - export DEPLOYPATH=/home/evotoqmq/public_html
-    - /bin/cp -R * $DEPLOYPATH
