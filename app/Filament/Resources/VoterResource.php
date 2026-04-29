@@ -49,7 +49,8 @@ class VoterResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('access_code')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('has_voted')
+                Tables\Columns\IconColumn::make('has_voted')
+                    ->boolean()
                     ->label('Voted?'),
 
                 Tables\Columns\TextColumn::make('created_at')

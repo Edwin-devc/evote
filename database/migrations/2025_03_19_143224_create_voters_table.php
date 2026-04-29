@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('student_number');
             $table->string('access_code');
-            $table->binary('has_voted')->default(false);
+            $table->boolean('has_voted')->default(false);
             $table->timestamps();
         });
     }

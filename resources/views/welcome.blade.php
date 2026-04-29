@@ -12,7 +12,7 @@
 
         <!-- Header -->
         <div class="bg-indigo-600 px-6 py-4">
-            <h1 class="text-xl md:text-2xl font-bold text-white text-center">MUES Election 2025</h1>
+            <h1 class="text-xl md:text-2xl font-bold text-white text-center">MUES Election 2026</h1>
         </div>
 
         <!-- Error Message -->
@@ -44,7 +44,7 @@
                     </div>
 
                     <div>
-                        <label for="studentId" class="block text-sm font-medium text-gray-700 mb-1">Student Number</label>
+                        <label for="studentId" class="block text-sm font-medium text-gray-700 mb-1">Registration Number</label>
                         <input type="text" id="studentId" name="studentId" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200">
                     </div>
                 </div>

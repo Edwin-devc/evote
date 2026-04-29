@@ -15,7 +15,7 @@
         </div>
 
         <h1 class="text-2xl font-bold text-gray-800 mb-4">Thank You for Voting!</h1>
-        <p class="text-gray-600 mb-6">Your vote has been recorded successfully. Thank you for participating in the MUES Elections 2025.</p>
+        <p class="text-gray-600 mb-6">Your vote has been recorded successfully. Thank you for participating in the MUES Elections 2026.</p>
 
         <div class="mt-8">
             <a href="/" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-6 rounded-lg transition duration-200">

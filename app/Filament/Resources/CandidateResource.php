@@ -5,8 +5,10 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\CandidateResource\Pages;
 use App\Filament\Resources\CandidateResource\RelationManagers;
 use App\Models\Candidate;
+use App\Models\Position;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Forms\Components\FileUpload;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -27,10 +29,19 @@ class CandidateResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('name')
                     ->required(),
-                Forms\Components\TextInput::make('img_path')
-                    ->label('Image URL'),
+                FileUpload::make('img_path')
+                    ->label('Photo')
+                    ->image()
+                    ->disk('public')
+                    ->directory('candidates')
+                    ->visibility('public'),
                 Forms\Components\Select::make('position_id')
                     ->relationship('position', 'name')
+                    ->createOptionForm([
+                        Forms\Components\TextInput::make('name')
+                            ->required(),
+                    ])
+                    ->createOptionUsing(fn (array $data): int => Position::create($data)->getKey())
                     ->required(),
             ]);
     }

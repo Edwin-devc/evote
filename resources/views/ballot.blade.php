@@ -12,7 +12,7 @@
     <div class="container mx-auto px-4 py-8 max-w-4xl">
         <!-- Header -->
         <div class="bg-white rounded-xl shadow-md p-6 mb-6 text-center">
-            <h1 class="text-2xl md:text-3xl font-bold text-gray-800">MUES Elections 2025</h1>
+            <h1 class="text-2xl md:text-3xl font-bold text-gray-800">MUES Elections 2026</h1>
             <p class="text-gray-600 mt-2">Select one candidate for each position</p>
         </div>
 
@@ -41,7 +41,11 @@
                     <div class="candidate-card border border-gray-200 rounded-lg p-4 hover:border-blue-500 transition-colors cursor-pointer">
                         <div class="flex items-center">
                             <div class="shrink-0">
-                                <img src="{{ asset('candidates/'.$candidate->img_path) }}" alt="{{ $candidate->name }}" class="w-16 h-16 rounded-full object-cover">
+                                @if($candidate->photo_url)
+                                <img src="{{ $candidate->photo_url }}" alt="{{ $candidate->name }}" class="w-16 h-16 rounded-full object-cover">
+                                @else
+                                <div class="w-16 h-16 rounded-full bg-gray-200"></div>
+                                @endif
                             </div>
                             <div class="ml-4 flex-grow">
                                 <h3 class="font-medium text-gray-800">{{ $candidate->name }}</h3>
