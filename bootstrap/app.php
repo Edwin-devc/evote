@@ -13,6 +13,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
             'voter.verified' => \App\Http\Middleware\EnsureVoterIsVerified::class,
+            'voting.open' => \App\Http\Middleware\EnsureVotingOpen::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
