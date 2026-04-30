@@ -13,7 +13,12 @@ class ListResults extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            // Actions\CreateAction::make(),
+            Actions\Action::make('downloadPdf')
+                ->label('Download PDF')
+                ->icon('heroicon-o-arrow-down-tray')
+                ->url(route('admin.results.pdf'))
+                ->openUrlInNewTab()
+                ->visible(fn (): bool => auth()->user()?->can('view_any_result') === true),
         ];
     }
 }

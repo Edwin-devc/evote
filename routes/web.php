@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VotingController;
+use App\Http\Controllers\Admin\ResultPdfController;
 
 // Login routes
 Route::get('/', [VotingController::class, 'showLoginForm']);
@@ -19,3 +20,7 @@ Route::middleware(['voter.verified'])->group(function () {
 
 // Thank you page
 Route::get('/thanks', [VotingController::class, 'showThanks'])->name('thanks');
+
+Route::get('/admin/results/pdf', ResultPdfController::class)
+    ->middleware('auth')
+    ->name('admin.results.pdf');
