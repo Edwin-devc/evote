@@ -61,12 +61,9 @@ class VotingController extends Controller
             ]);
         }
 
-        if (!session('access_code_sent')) {
-            $voter = Voter::where('student_number', session('voter_number'))->first();
-            if ($voter) {
-                SendAccessCodeToVoterJob::dispatch($voter->id);
-                session(['access_code_sent' => true]);
-            }
+        $voter = Voter::where('student_number', session('voter_number'))->first();
+        if ($voter) {
+            SendAccessCodeToVoterJob::dispatch($voter->id);
         }
         return view('verify');
     }
