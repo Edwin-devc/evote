@@ -2,7 +2,6 @@
 
 namespace App\Filament\Resources\VoterResource\Pages;
 
-use App\Jobs\SendAccessCodeToVoterJob;
 use App\Filament\Resources\VoterResource;
 use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
@@ -10,9 +9,4 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateVoter extends CreateRecord
 {
     protected static string $resource = VoterResource::class;
-
-    protected function afterCreate(): void
-    {
-        SendAccessCodeToVoterJob::dispatch($this->record->id);
-    }
 }

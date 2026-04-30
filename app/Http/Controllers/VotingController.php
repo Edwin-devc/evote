@@ -41,9 +41,6 @@ class VotingController extends Controller
             // Store voter information in the session
             session(['voter_number' => $voter->student_number, 'logged_in' => 1]);
 
-            // Dispatch job to send access code to voter email
-            SendAccessCodeToVoterJob::dispatch($voter->id);
-
             // Redirect to verification page
             return redirect()->route('verify');
         }
@@ -62,6 +59,14 @@ class VotingController extends Controller
             return redirect('/')->withErrors([
                 'error' => 'Your session has expired. Please login again.',
             ]);
+        }
+
+        if (!session('access_code_sent')) {
+            $voter = Voter::where('student_number', session('voter_number'))->first();
+            if ($voter) {
+                SendAccessCodeToVoterJob::dispatch($voter->id);
+                session(['access_code_sent' => true]);
+            }
         }
         return view('verify');
     }
