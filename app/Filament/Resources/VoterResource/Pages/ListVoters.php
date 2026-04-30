@@ -19,6 +19,7 @@ class ListVoters extends ListRecords
             Actions\CreateAction::make(),
             Actions\Action::make('importVoters')
                 ->label('Import voters')
+                ->visible(fn (): bool => auth()->user()?->hasRole('super_admin') === true)
                 ->form([
                     FileUpload::make('file')
                         ->label('CSV file')
@@ -29,6 +30,9 @@ class ListVoters extends ListRecords
                         ->visibility('private'),
                 ])
                 ->action(function (array $data): void {
+                    if (auth()->user()?->hasRole('super_admin') !== true) {
+                        abort(403);
+                    }
                     $this->importVotersFromCsv($data['file']);
                 }),
         ];
