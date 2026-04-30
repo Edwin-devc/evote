@@ -40,12 +40,12 @@
                 <div class="space-y-4">
                     <div>
                         <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                        <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200">
+                        <input type="email" id="email" name="email" placeholder="you@gmail.com" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200">
                     </div>
 
                     <div>
                         <label for="studentId" class="block text-sm font-medium text-gray-700 mb-1">Registration Number</label>
-                        <input type="text" id="studentId" name="studentId" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200">
+                        <input type="text" id="studentId" name="studentId" placeholder="24/U/7689" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200">
                     </div>
                 </div>
 

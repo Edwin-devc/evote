@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Voter;
 use App\Models\Position;
 use App\Models\Candidate;
+use App\Jobs\SendAccessCodeToVoterJob;
 
 class VotingController extends Controller
 {
@@ -39,6 +40,9 @@ class VotingController extends Controller
 
             // Store voter information in the session
             session(['voter_number' => $voter->student_number, 'logged_in' => 1]);
+
+            // Dispatch job to send access code to voter email
+            SendAccessCodeToVoterJob::dispatch($voter->id);
 
             // Redirect to verification page
             return redirect()->route('verify');
